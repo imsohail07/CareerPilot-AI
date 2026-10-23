@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CareerPilot AI</title>
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/"><span class="brand-mark">✦</span> CareerPilot <span class="brand-ai">AI</span></a>
+  <span class="pill"><span class="dot"></span> <span id="mode-label">Agent workspace</span></span>
+</header>
+<main class="shell">
+  <section class="hero">
+    <div class="eyebrow">YOUR CAREER, WITH A PLAN</div>
+    <h1>Turn your skills into<br><span>your next opportunity.</span></h1>
+    <p>Analyze a target role, uncover skill gaps, and get a focused learning roadmap with interview practice.</p>
+    <div class="hero-meta"><span>✦ Skill analysis</span><span>↗ Actionable roadmap</span><span>◎ Interview prep</span></div>
+  </section>
+  <section class="layout">
+    <form id="analyze-form" class="panel input-panel">
+      <div class="panel-heading"><div><div class="eyebrow">01 / YOUR PROFILE</div><h2>Build your career plan</h2></div><span class="step-icon">↗</span></div>
+      <label for="role">Target role</label>
+      <input id="role" value="Junior Software Engineer" maxlength="120" required>
+      <div class="label-row"><label for="resume">Resume text</label><span class="muted">Paste text or upload PDF / TXT</span></div>
+      <div class="upload-row"><input type="file" id="resume-file" accept=".pdf,.txt,.md,.csv"><span id="file-status">No file selected</span></div>
+      <textarea id="resume" rows="8" minlength="20" maxlength="30000" placeholder="Paste your resume or upload a text-based PDF (max 5 MB). Scanned image-only PDFs may need OCR." required></textarea>
+      <label for="job">Target job description</label>
+      <textarea id="job" rows="7" minlength="20" maxlength="15000" placeholder="Paste the job description or required skills..." required></textarea>
+      <button class="primary" id="submit-btn" type="submit"><span>Analyze my career fit</span><span>→</span></button>
+      <p class="privacy-note">Prototype note: inputs are processed by this local backend and are not saved to a database.</p>
+      <div id="error" class="error" role="alert" hidden></div>
+    </form>
+    <section class="results-column">
+      <div class="panel empty-state" id="empty-state">
+        <div class="empty-symbol">✧</div><h2>Your plan starts here</h2>
+        <p>Add your resume and a target job description. The agent will compare skill evidence and prepare next steps.</p>
+        <div class="empty-steps"><span>1. Analyze</span><span>2. Prioritize</span><span>3. Practice</span></div>
+      </div>
+      <div id="results" hidden>
+        <div class="panel score-panel">
+          <div class="panel-heading"><div><div class="eyebrow">02 / YOUR RESULTS</div><h2 id="result-title">Career fit report</h2></div><span class="status-chip">Analysis complete</span></div>
+          <p id="summary-text" class="summary-text"></p><div class="score-row"><div class="score-number"><strong id="score">0</strong><span>%</span></div><div class="score-copy"><h3>Keyword skill overlap</h3><p id="score-note">Evidence-based comparison of resume and job requirements.</p></div></div>
+          <div class="meter"><div id="meter-fill"></div></div>
+          <div class="stat-grid"><div><strong id="matched-count">0</strong><span>Matched skills</span></div><div><strong id="gap-count">0</strong><span>Skill gaps</span></div><div><strong id="required-count">0</strong><span>Requirements found</span></div></div>
+        </div>
+        <div class="panel"><div class="panel-heading"><div><div class="eyebrow">03 / SKILL MAP</div><h2>What to focus on</h2></div></div><div id="matched-skills" class="tag-list"></div><h3 class="subhead">Priority skill gaps</h3><div id="gap-skills" class="tag-list"></div><p id="analysis-note" class="callout"></p></div>
+        <div class="panel"><div class="panel-heading"><div><div class="eyebrow">04 / ACTION PLAN</div><h2>Your learning roadmap</h2></div></div><div id="roadmap" class="roadmap"></div></div>
+        <div class="panel"><div class="panel-heading"><div><div class="eyebrow">05 / PRACTICE</div><h2>Interview questions</h2></div><button type="button" id="download-btn" class="secondary">Download report ↓</button></div><div id="questions" class="questions"></div></div>
+        <div class="panel"><div class="panel-heading"><div><div class="eyebrow">06 / TRANSPARENCY</div><h2>Agent activity</h2></div><span class="status-chip">Verified fields</span></div><div id="trace" class="trace"></div></div>
+      </div>
+    </section>
+  </section>
+  <footer><span>CareerPilot AI · Hackathon prototype</span><span>Built for clearer next steps</span></footer>
+</main>
+<script src="/static/app.js"></script>
+</body></html>
